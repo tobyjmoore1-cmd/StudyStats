@@ -37,6 +37,10 @@ def find_top_student(students):
 
     return top_student
 
+def calculate_pass_rate(students, passing_grade=70):
+    passing_students = [student for student in students if student["grade"] >= passing_grade]
+    pass_rate = len(passing_students) / len(students) * 100
+    return pass_rate
 
 if __name__ == "__main__":
     students = load_grades("grades.csv")
@@ -46,3 +50,5 @@ if __name__ == "__main__":
 
     print(f"Class average: {average:.2f}")
     print(f"Top student: {top_student['name']} with grade: {top_student['grade']}")
+    pass_rate = calculate_pass_rate(students)
+    print(f"Pass rate: {pass_rate:.2f}%")
